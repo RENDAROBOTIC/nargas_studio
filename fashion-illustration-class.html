@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Fashion Illustration - Nargas Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-letters">NK</div>
+                <div class="logo-needle"></div>
+                <span class="logo-text"><a href="index.html" style="color: #2c3e50; text-decoration: none;">NARGAS KHABAZHA</a></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#classes">Classes</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Class Hero -->
+    <section class="class-hero">
+        <h1>Introduction to Fashion Illustration</h1>
+        <p>Bring your fashion design ideas to life through the art of illustration</p>
+    </section>
+
+    <!-- Class Content -->
+    <div class="class-content">
+        <div class="class-description">
+            <h2>About This Class</h2>
+            <p>Learn to create beautiful fashion sketches and bring your design ideas to life! Perfect for aspiring fashion designers or anyone who loves to draw.</p>
+            
+            <h3>What You'll Learn:</h3>
+            <ul>
+                <li>Fashion figure drawing with proper proportions</li>
+                <li>Fabric rendering and texture techniques</li>
+                <li>Color theory and application</li>
+                <li>Drawing different garment types</li>
+                <li>Digital illustration basics</li>
+            </ul>
+        </div>
+
+        <div class="class-details">
+            <h2>Class Information</h2>
+            <div class="details-grid">
+                <div class="detail-item">
+                    <h3>Duration</h3>
+                    <p>8 weeks, 2.5 hours per session</p>
+                </div>
+                <div class="detail-item">
+                    <h3>Price</h3>
+                    <p>$399 per person</p>
+                </div>
+                <div class="detail-item">
+                    <h3>Class Size</h3>
+                    <p>Max 6 students</p>
+                </div>
+                <div class="detail-item">
+                    <h3>Skill Level</h3>
+                    <p>Beginner-Intermediate</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Signup Form -->
+        <div class="signup-section">
+            <form class="signup-form" onsubmit="handleFormSubmit(event, 'Introduction to Fashion Illustration')">
+                <h2>Sign Up for Fashion Illustration Class</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="classTime">Preferred Class Time *</label>
+                    <select id="classTime" name="classTime" required>
+                        <option value="">Select a time slot</option>
+                        <option value="Tuesday 6:30 PM - 9:00 PM">Tuesday 6:30 PM - 9:00 PM</option>
+                        <option value="Thursday 10:00 AM - 12:30 PM">Thursday 10:00 AM - 12:30 PM</option>
+                        <option value="Saturday 10:00 AM - 12:30 PM">Saturday 10:00 AM - 12:30 PM</option>
+                        <option value="Sunday 2:00 PM - 4:30 PM">Sunday 2:00 PM - 4:30 PM</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comments">Comments or Questions</label>
+                    <textarea id="comments" name="comments" placeholder="Tell us about your drawing experience..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Register Now</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

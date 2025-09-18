@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Sewing - Nargas Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-letters">NK</div>
+                <div class="logo-needle"></div>
+                <span class="logo-text"><a href="index.html" style="color: #2c3e50; text-decoration: none;">NARGAS KHABAZHA</a></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#classes">Classes</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Class Hero -->
+    <section class="class-hero">
+        <h1>Introduction to Sewing</h1>
+        <p>Master the fundamentals of sewing and create your first beautiful garment from scratch</p>
+    </section>
+
+    <!-- Class Content -->
+    <div class="class-content">
+        <div class="class-description">
+            <h2>About This Class</h2>
+            <p>Perfect for complete beginners! Learn basic sewing skills, how to use a sewing machine, and create your first simple garment. Our experienced instructor will guide you through every step.</p>
+            
+            <h3>What You'll Learn:</h3>
+            <ul>
+                <li>Basic hand and machine stitches</li>
+                <li>How to read patterns</li>
+                <li>Fabric selection and cutting</li>
+                <li>Simple garment construction</li>
+                <li>Finishing techniques</li>
+            </ul>
+        </div>
+
+        <div class="class-details">
+            <h2>Class Information</h2>
+            <div class="details-grid">
+                <div class="detail-item">
+                    <h3>Duration</h3>
+                    <p>6 weeks, 2 hours per session</p>
+                </div>
+                <div class="detail-item">
+                    <h3>Price</h3>
+                    <p>$299 per person</p>
+                </div>
+                <div class="detail-item">
+                    <h3>Class Size</h3>
+                    <p>Max 8 students</p>
+                </div>
+                <div class="detail-item">
+                    <h3>Skill Level</h3>
+                    <p>Complete Beginner</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Signup Form -->
+        <div class="signup-section">
+            <form class="signup-form" onsubmit="handleFormSubmit(event, 'Introduction to Sewing')">
+                <h2>Sign Up for Sewing Class</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="classTime">Preferred Class Time *</label>
+                    <select id="classTime" name="classTime" required>
+                        <option value="">Select a time slot</option>
+                        <option value="Monday 6:00 PM - 8:00 PM">Monday 6:00 PM - 8:00 PM</option>
+                        <option value="Wednesday 10:00 AM - 12:00 PM">Wednesday 10:00 AM - 12:00 PM</option>
+                        <option value="Saturday 2:00 PM - 4:00 PM">Saturday 2:00 PM - 4:00 PM</option>
+                        <option value="Sunday 11:00 AM - 1:00 PM">Sunday 11:00 AM - 1:00 PM</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comments">Comments or Questions</label>
+                    <textarea id="comments" name="comments" placeholder="Tell us about your sewing experience..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Register Now</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
