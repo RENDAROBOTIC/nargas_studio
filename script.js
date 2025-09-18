@@ -141,7 +141,7 @@ document.head.appendChild(styleSheet);
 
 // Email simulation (for demo purposes)
 function simulateEmailSend(formData) {
-    console.log('Email would be sent to: info@nargasstudio.com');
+    console.log('Email would be sent to: oldtownrode@gmail.com');
     console.log('Email content:', {
         subject: `New ${formData.classType} Registration`,
         body: `
