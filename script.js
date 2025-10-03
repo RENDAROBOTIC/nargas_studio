@@ -32,28 +32,49 @@ function handleFormSubmit(event, formType) {
     event.preventDefault();
     
     const form = event.target;
-    const formData = new FormData(form);
     
-    // Get form values
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const phone = formData.get('phone');
-    const classTime = formData.get('classTime');
-    const comments = formData.get('comments');
-    
-    // Basic validation
-    if (!name || !email || !phone || !classTime) {
-        alert('Please fill in all required fields.');
-        return;
-    }
-    
-    // Phone number validation - more lenient
-    const cleanedPhone = phone.replace(/[\s\-\(\)]/g, '');
-    if (cleanedPhone.length < 10) {
-        alert('Please enter a valid phone number.');
-        return;
-    }
-    
+    // Small delay to ensure autofill data is captured
+    setTimeout(() => {
+        // Get form values directly from inputs (better for autofill)
+        const nameInput = form.querySelector('[name="name"]');
+        const emailInput = form.querySelector('[name="email"]');
+        const phoneInput = form.querySelector('[name="phone"]');
+        const classTimeInput = form.querySelector('[name="classTime"]');
+        const commentsInput = form.querySelector('[name="comments"]');
+        
+        const name = nameInput ? nameInput.value.trim() : '';
+        const email = emailInput ? emailInput.value.trim() : '';
+        const phone = phoneInput ? phoneInput.value.trim() : '';
+        const classTime = classTimeInput ? classTimeInput.value : '';
+        const comments = commentsInput ? commentsInput.value.trim() : '';
+        
+        // Basic validation
+        if (!name || !email || !phone || !classTime) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+        
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+        
+        // Phone number validation - more lenient
+        const cleanedPhone = phone.replace(/[\s\-\(\)]/g, '');
+        if (cleanedPhone.length < 10) {
+            alert('Please enter a valid phone number.');
+            return;
+        }
+        
+        // Proceed with submission
+        submitForm(name, email, phone, classTime, comments, formType, form);
+    }, 100);
+}
+
+// Actual form submission function
+function submitForm(name, email, phone, classTime, comments, formType, form) {
     // Show loading state
     showLoadingState(form);
     
