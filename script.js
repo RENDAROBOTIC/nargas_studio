@@ -46,9 +46,9 @@ function handleFormSubmit(event, formType) {
         return;
     }
     
-    // Phone number validation
-    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-    if (!phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''))) {
+    // Phone number validation - more lenient
+    const cleanedPhone = phone.replace(/[\s\-\(\)]/g, '');
+    if (cleanedPhone.length < 10) {
         alert('Please enter a valid phone number.');
         return;
     }
@@ -75,8 +75,15 @@ function handleFormSubmit(event, formType) {
             _captcha: 'false'
         })
     })
-    .then(response => response.json())
+    .then(response => {
+        console.log('Response status:', response.status);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
     .then(data => {
+        console.log('Success:', data);
         // Store form data in localStorage as backup
         const submissionData = {
             name: name,
@@ -96,7 +103,7 @@ function handleFormSubmit(event, formType) {
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('There was an error submitting your registration. Please try again or contact us directly at nargasatelier@gmail.com');
+        alert('There was an error submitting your registration. Please check the browser console for details, or contact us directly at nargasatelier@gmail.com');
         // Remove loading overlay
         const overlay = document.querySelector('.loading-overlay');
         if (overlay) overlay.remove();
