@@ -53,12 +53,31 @@ function handleFormSubmit(event, formType) {
         return;
     }
     
-    // Simulate form submission
+    // Show loading state
     showLoadingState(form);
     
-    // Simulate API call delay
-    setTimeout(() => {
-        // Store form data in localStorage for demo purposes
+    // Send email via FormSubmit
+    fetch('https://formsubmit.co/nargasatelier@gmail.com', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            name: name,
+            phone: phone,
+            classTime: classTime,
+            comments: comments || 'None',
+            classType: formType,
+            _subject: `New ${formType} Registration - ${name}`,
+            _cc: 'oldtownrode@gmail.com',
+            _template: 'table',
+            _captcha: 'false'
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Store form data in localStorage as backup
         const submissionData = {
             name: name,
             phone: phone,
@@ -68,14 +87,23 @@ function handleFormSubmit(event, formType) {
             timestamp: new Date().toISOString()
         };
         
-        // Store in localStorage
         let submissions = JSON.parse(localStorage.getItem('nargasSubmissions') || '[]');
         submissions.push(submissionData);
         localStorage.setItem('nargasSubmissions', JSON.stringify(submissions));
         
         // Redirect to success page
         window.location.href = 'success.html';
-    }, 2000);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('There was an error submitting your registration. Please try again or contact us directly at nargasatelier@gmail.com');
+        // Remove loading overlay
+        const overlay = document.querySelector('.loading-overlay');
+        if (overlay) overlay.remove();
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Register Now';
+    });
 }
 
 // Show loading state
