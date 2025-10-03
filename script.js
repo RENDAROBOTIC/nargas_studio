@@ -79,10 +79,15 @@ function handleFormSubmit(event, formType) {
     })
     .then(response => {
         console.log('Response status:', response.status);
-        if (!response.ok) {
+        // FormSubmit returns 200 on success
+        if (response.ok || response.status === 200) {
+            return response.json().catch(() => {
+                // If JSON parsing fails but status is ok, still treat as success
+                return { success: true };
+            });
+        } else {
             throw new Error('Network response was not ok');
         }
-        return response.json();
     })
     .then(data => {
         console.log('Success:', data);
