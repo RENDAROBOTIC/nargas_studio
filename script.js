@@ -36,12 +36,13 @@ function handleFormSubmit(event, formType) {
     
     // Get form values
     const name = formData.get('name');
+    const email = formData.get('email');
     const phone = formData.get('phone');
     const classTime = formData.get('classTime');
     const comments = formData.get('comments');
     
     // Basic validation
-    if (!name || !phone || !classTime) {
+    if (!name || !email || !phone || !classTime) {
         alert('Please fill in all required fields.');
         return;
     }
@@ -65,6 +66,7 @@ function handleFormSubmit(event, formType) {
         },
         body: JSON.stringify({
             name: name,
+            email: email,
             phone: phone,
             classTime: classTime,
             comments: comments || 'None',
@@ -87,6 +89,7 @@ function handleFormSubmit(event, formType) {
         // Store form data in localStorage as backup
         const submissionData = {
             name: name,
+            email: email,
             phone: phone,
             classTime: classTime,
             comments: comments,
@@ -98,8 +101,13 @@ function handleFormSubmit(event, formType) {
         submissions.push(submissionData);
         localStorage.setItem('nargasSubmissions', JSON.stringify(submissions));
         
-        // Redirect to success page
-        window.location.href = 'success.html';
+        // Show success message
+        showSuccessMessage();
+        
+        // Redirect to success page after showing message
+        setTimeout(() => {
+            window.location.href = 'success.html';
+        }, 2000);
     })
     .catch(error => {
         console.error('Error:', error);
@@ -132,6 +140,26 @@ function showLoadingState(form) {
     `;
     
     document.body.appendChild(loadingOverlay);
+}
+
+// Show success message
+function showSuccessMessage() {
+    // Remove loading overlay
+    const loadingOverlay = document.querySelector('.loading-overlay');
+    if (loadingOverlay) loadingOverlay.remove();
+    
+    // Add success overlay
+    const successOverlay = document.createElement('div');
+    successOverlay.className = 'loading-overlay';
+    successOverlay.innerHTML = `
+        <div class="loading-content success-content">
+            <i class="fas fa-check-circle" style="color: #28a745; font-size: 3rem;"></i>
+            <h2 style="color: #28a745; margin: 1rem 0;">Registration Successful!</h2>
+            <p>Thank you for registering. We'll contact you shortly.</p>
+        </div>
+    `;
+    
+    document.body.appendChild(successOverlay);
 }
 
 // Add loading overlay styles
